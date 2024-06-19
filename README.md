@@ -1,1 +1,1 @@
-"# javaScript-30-days-exercise" 
+"# my javaScript-30-days-exercise" 
