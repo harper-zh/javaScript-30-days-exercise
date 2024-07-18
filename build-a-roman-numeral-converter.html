@@ -1,0 +1,132 @@
+** start of undefined **
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roman Numeral Converter</title>
+    <style>
+      *,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --dark-grey: #0a0a23;
+  --light-grey: #f5f6f7;
+  --white: #ffffff;
+  --black: #000;
+}
+body {
+  background-color:var(--dark-grey)
+}
+.container {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  margin-top:20%;
+}
+.input-container {
+  display:flex;
+  flex-direction:row;
+  width:200px;
+  gap:10px;
+}
+
+input {
+  width:130px;
+  height:30px;
+}
+
+button {
+  width:60px;
+}
+
+.result-container {
+  width:200px;
+  height:100px;
+  border:2px solid var(--white);
+  margin-top:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+
+}
+
+span {
+  color:var(--white)
+}
+
+#output {
+  font-size:30px;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <div class="input-container">
+      <input id="number" type="number"></input>
+      <button id="convert-btn">convert</button>
+    </div>
+   
+    <div class="result-container">
+      
+      <span id="output">result</span>
+    </div>
+    </div>
+
+    <script>
+const output = document.getElementById("output")
+const btn = document.getElementById("convert-btn")
+const input = document.getElementById("number")
+
+const convert = () => {
+  const inputNumber = parseInt(input.value)
+
+if (!inputNumber) {
+  output.textContent = "Please enter a valid number"
+} else if (inputNumber < 0) {
+  output.textContent = "Please enter a number greater than or equal to 1"
+} else if (inputNumber >= 4000) {
+  output.textContent = "Please enter a number less than or equal to 3999"
+} else {
+  output.textContent =  convertRomanNumeral(inputNumber,0)
+}
+}
+
+const romanNumerals = ['M',
+'CM','D','CD','C',
+'XC','L','XL','X',
+'IX','V','IV','I']
+const arabicNumerals = [1000,
+900,500,400,100,
+90,50,40,10,
+9,5,4,1]
+const convertRomanNumeral = (input, i) => {
+  if (input - arabicNumerals[i] === 0) {
+    return `${romanNumerals[i]}`
+
+  } else if(input - arabicNumerals[i]> 0) {
+    return `${romanNumerals[i]}` + convertRomanNumeral(input - arabicNumerals[i],i)
+  } else {
+    return  convertRomanNumeral(input,i+1)
+  }
+  
+
+
+}
+btn.addEventListener("click",convert)
+
+    </script>
+  <body>
+</html>
+
+
+
