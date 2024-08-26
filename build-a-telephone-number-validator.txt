@@ -1,0 +1,145 @@
+** start of undefined **
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <span>Please Enter The Number Here</span>
+    <input id="user-input"></input>
+    <div class="btns">
+    <button id="check-btn" >check</button>
+    <button id="clear-btn" >clear</button>
+
+    </div>
+    <div id="result-container" class="result">
+    <div id="results-div" >
+      
+    </div>
+    </div>
+
+    </div>
+    
+    <script src= "./script.js"></script>
+  </body>
+
+</html>
+
+** end of undefined **
+
+** start of undefined **
+
+const input = document.getElementById('user-input')
+
+const checkBtn = document.getElementById('check-btn')
+const clearBtn = document.getElementById('clear-btn')
+const result = document.getElementById('results-div')
+
+const reg = /^(1\s?)?(\(\d{3}\)|\d{3})[\s|-]?(\d{3})[\s|-]?(\d{4}$)/
+
+const matchReg = (input) => {
+  return reg.test(input)
+
+}
+
+const removeDiv = () => {
+  result.textContent = ''
+}
+
+const validNumber = () => {
+  
+  const inputContent = input.value
+  console.log(inputContent)
+  if (inputContent === '') {
+    alert('Please Provide a phone number')
+    return
+  }
+  const validResult = matchReg(inputContent)
+  if (validResult) {
+    result.textContent = `Valid US number: ${inputContent}`
+    
+  } else {
+    result.textContent = `Invalid US number: ${inputContent}`
+
+  }
+}
+
+clearBtn.addEventListener('click',removeDiv)
+checkBtn.addEventListener("click",validNumber)
+
+
+
+** end of undefined **
+
+** start of undefined **
+
+:root{
+  --gray-75: #3b3b4f;
+  --width-80:80%;
+
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--gray-75);
+  gap: 20px;
+}
+.container {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  
+  gap: 20px;
+  width:var(--width-80);
+
+
+}
+
+.btns {
+  margin-right:0;
+}
+
+button {
+  width: 70px;
+  height: 40px;
+  border-radius: 10px;
+  margin-left:0;
+  
+}
+
+input {
+  margin-top: 20px;
+  width: 80%;
+  height: 60px;
+}
+
+span {
+  margin-top: 20px;
+  color:white;
+  font-size:30px;
+}
+
+.result {
+  border: solid;
+  border-width:1px;
+  border-color:white;
+  width:var(--width-80);
+  height:180px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color:white;
+  font-size:20px;
+
+}
+
+** end of undefined **
+
